@@ -7,7 +7,7 @@ function Picker(props) {
   return (
     <div className={theme.container} aria-label='Date picker'>
       <div className={theme.header}>
-        <HeaderTitle />
+        <HeaderTitle monthIndex={5} year={2020} />
       </div>
     </div>
   );
