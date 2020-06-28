@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-function InputDateTimePicker() {
-  return <p>hello world</p>
+function InputDatePicker() {
+  return <p>hello world</p>;
 }
 
-export default InputDateTimePicker
+export default InputDatePicker;
