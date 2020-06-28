@@ -1,10 +1,14 @@
 import React from 'react';
-import style from './Picker.component.css';
+
+import HeaderTitle from './HeaderTitle';
+import theme from './Picker.scss';
 
 function Picker(props) {
   return (
-    <div className={style.picker} aria-label='Date picker'>
-      Picker2
+    <div className={theme.container} aria-label='Date picker'>
+      <div className={theme.header}>
+        <HeaderTitle />
+      </div>
     </div>
   );
 }
