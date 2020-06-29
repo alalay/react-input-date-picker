@@ -8,6 +8,12 @@
   text-transform: uppercase;
   -webkit-transition: all 0.1s ease-out;
   transition: all 0.1s ease-out;
+
+  //TODO: refactor this 👇
+  :global(svg) {
+    width: 1.2rem;
+    height: 1.6rem;
+  }
 }
 :global(.btn.btn-tertiary) {
   background-color: transparent;
