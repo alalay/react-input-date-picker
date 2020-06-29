@@ -1,5 +1,7 @@
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+$padding-small: 1rem;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $padding-small;
 }
