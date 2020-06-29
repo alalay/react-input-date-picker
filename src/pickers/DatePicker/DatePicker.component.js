@@ -1,17 +1,15 @@
 import React from 'react';
+import { buildDayNames } from '../../generator';
 
 function DatePicker(props) {
+  const dayNames = buildDayNames();
   return (
     <table>
       <thead>
         <tr>
-          <th>MO</th>
-          <th>MO</th>
-          <th>MO</th>
-          <th>MO</th>
-          <th>MO</th>
-          <th>MO</th>
-          <th>MO</th>
+          {dayNames.map((day, idx) => (
+            <th key={idx}>{day.abbr}</th>
+          ))}
         </tr>
       </thead>
       <tbody>
