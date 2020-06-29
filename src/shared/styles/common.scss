@@ -1,4 +1,4 @@
-.btn {
+:global(.btn) {
   border: none;
   font-size: 14px;
   font-weight: 500;
@@ -9,7 +9,7 @@
   -webkit-transition: all 0.1s ease-out;
   transition: all 0.1s ease-out;
 }
-.btn-tertiary {
+:global(.btn.btn-tertiary) {
   background-color: transparent;
   box-shadow: none;
   font-weight: 600;
