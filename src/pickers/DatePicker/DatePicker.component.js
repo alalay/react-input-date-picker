@@ -1,8 +1,9 @@
 import React from 'react';
-import { buildDayNames } from '../../generator';
+import { buildDayNames, buildWeeks } from '../../generator';
 
 function DatePicker(props) {
   const dayNames = buildDayNames();
+  const weeks = buildWeeks();
   return (
     <table>
       <thead>
