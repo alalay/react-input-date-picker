@@ -49,10 +49,6 @@ DatePicker.propTypes = {
 };
 
 DatePicker.defaultProps = {
-  calendar: {
-    year: 2020,
-    monthIndex: 5
-  },
   onSelect: (event, date) => {
     console.log(date);
   }

@@ -65,10 +65,6 @@ DateView.propTypes = {
   onSelectMonthYear: PropTypes.func
 };
 DateView.defaultProps = {
-  calendar: {
-    monthIndex: 11,
-    year: 2020
-  },
   onSelectMonthYear: (monthIndex, year) => {
     console.log({ monthIndex, year });
   }
