@@ -20,20 +20,19 @@ function DateView(props) {
   function selectMonth(monthIndex, year) {
     props.onSelectMonthYear(monthIndex, year);
   }
-  function goPrevious() {
-    const monthIncremented = props.calendar.monthIndex - 1;
+  function incrementMonthIndex(increment) {
+    const monthIncremented = props.calendar.monthIndex + increment;
     const nextMonthIndex = euclideanModulo(monthIncremented, 12);
     const yearIncrement = Math.floor(monthIncremented / 12);
     const nextYear = props.calendar.year + yearIncrement;
 
     selectMonth(nextMonthIndex, nextYear);
   }
+  function goPrevious() {
+    incrementMonthIndex(-1);
+  }
   function goNext() {
-    const monthIncremented = props.calendar.monthIndex + 1;
-    const nextMonthIndex = euclideanModulo(monthIncremented, 12);
-    const yearIncrement = Math.floor(monthIncremented / 12);
-    const nextYear = props.calendar.year + yearIncrement;
-    selectMonth(nextMonthIndex, nextYear);
+    incrementMonthIndex(1);
   }
   return (
     <div className='dateview'>
