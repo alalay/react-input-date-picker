@@ -5,18 +5,34 @@ import Header from './Header';
 import HeaderTitle from './HeaderTitle';
 import DatePicker from '../../pickers/DatePicker';
 
+/**
+ * Get the positive euclidean modulo number from a dividend and a divisor
+ * @param {number} dividend Dividend
+ * @param {number} divisor Divisor
+ * @return {number} The positive euclidean modulo
+ */
+function euclideanModulo(dividend, divisor) {
+  const modulo = ((dividend % divisor) + divisor) % divisor;
+  return modulo < 0 ? modulo + Math.abs(divisor) : modulo;
+}
+
 function DateView(props) {
   function selectMonth(monthIndex, year) {
     props.onSelectMonthYear(monthIndex, year);
   }
   function goPrevious() {
-    const nextMonthIndex = props.calendar.monthIndex - 1;
-    const nextYear = props.calendar.year;
+    const monthIncremented = props.calendar.monthIndex - 1;
+    const nextMonthIndex = euclideanModulo(monthIncremented, 12);
+    const yearIncrement = Math.floor(monthIncremented / 12);
+    const nextYear = props.calendar.year + yearIncrement;
+
     selectMonth(nextMonthIndex, nextYear);
   }
   function goNext() {
-    const nextMonthIndex = props.calendar.monthIndex + 1;
-    const nextYear = props.calendar.year;
+    const monthIncremented = props.calendar.monthIndex + 1;
+    const nextMonthIndex = euclideanModulo(monthIncremented, 12);
+    const yearIncrement = Math.floor(monthIncremented / 12);
+    const nextYear = props.calendar.year + yearIncrement;
     selectMonth(nextMonthIndex, nextYear);
   }
   return (
@@ -51,7 +67,7 @@ DateView.propTypes = {
 };
 DateView.defaultProps = {
   calendar: {
-    monthIndex: 5,
+    monthIndex: 11,
     year: 2020
   },
   onSelectMonthYear: (monthIndex, year) => {
