@@ -53,7 +53,11 @@ function DateView(props) {
           </button>
         }
       />
-      <DatePicker calendar={props.calendar} />
+      <DatePicker
+        calendar={props.calendar}
+        selectedDate={props.selectedDate}
+        onSelect={props.onSelect}
+      />
     </div>
   );
 }
