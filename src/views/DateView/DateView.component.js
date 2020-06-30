@@ -14,6 +14,11 @@ function DateView(props) {
     const nextYear = props.calendar.year;
     selectMonth(nextMonthIndex, nextYear);
   }
+  function goNext() {
+    const nextMonthIndex = props.calendar.monthIndex + 1;
+    const nextYear = props.calendar.year;
+    selectMonth(nextMonthIndex, nextYear);
+  }
   return (
     <div className='dateview'>
       <Header
@@ -26,7 +31,7 @@ function DateView(props) {
         }
         middle={<HeaderTitle {...props.calendar} />}
         right={
-          <button className='btn btn-tertiary'>
+          <button className='btn btn-tertiary' onClick={() => goNext()}>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
               <path d='M1 9h10.7l-4 4 1.4 1.4L15.5 8 9.1 1.6 7.7 3l4 4H1z' />
             </svg>
