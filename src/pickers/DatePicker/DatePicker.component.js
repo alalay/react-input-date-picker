@@ -1,9 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import getDate from 'date-fns/getDate';
 import { buildDayNames, buildWeeks } from '../../generator';
 
 function DatePicker(props) {
+  const { calendar } = props;
+  const { year, monthIndex } = calendar;
   const dayNames = buildDayNames();
-  const weeks = buildWeeks();
+  const weeks = buildWeeks(year, monthIndex);
   return (
     <table>
       <thead>
@@ -14,18 +18,31 @@ function DatePicker(props) {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
+        {weeks.map((week, i) => (
+          <tr key={i}>
+            {week.map((date, j) => {
+              const day = getDate(date);
+              return <td key={j}>{day}</td>;
+            })}
+          </tr>
+        ))}
       </tbody>
     </table>
   );
 }
+
+DatePicker.propTypes = {
+  calendar: PropTypes.shape({
+    year: PropTypes.number.isRequired,
+    monthIndex: PropTypes.number.isRequired
+  }).isRequired
+};
+
+DatePicker.defaultProps = {
+  calendar: {
+    year: 2020,
+    monthIndex: 5
+  }
+};
 
 export default DatePicker;
