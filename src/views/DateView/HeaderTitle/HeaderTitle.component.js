@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import classNames from 'classnames';
 import setYear from 'date-fns/setYear';
 import setMonth from 'date-fns/setMonth';
 import format from 'date-fns/format';

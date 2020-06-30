@@ -10,7 +10,11 @@ function CalendarPicker(props) {
     year: getYear(initialCalendarDate)
   };
   const [calendar, setCalendar] = useState(initialCalendar);
-  return <DateView calendar={calendar} />;
+
+  function onSelectMonthYear(monthIndex, year) {
+    setCalendar({ monthIndex, year });
+  }
+  return <DateView calendar={calendar} onSelectMonthYear={onSelectMonthYear} />;
 }
 
 export default CalendarPicker;
