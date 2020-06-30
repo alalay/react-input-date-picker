@@ -22,7 +22,16 @@ function DatePicker(props) {
           <tr key={i}>
             {week.map((date, j) => {
               const day = getDate(date);
-              return <td key={j}>{day}</td>;
+              return (
+                <td key={j}>
+                  <button
+                    className='btn btn-tertiary'
+                    onClick={(event) => props.onSelect(event, date)}
+                  >
+                    {day}
+                  </button>
+                </td>
+              );
             })}
           </tr>
         ))}
@@ -35,13 +44,17 @@ DatePicker.propTypes = {
   calendar: PropTypes.shape({
     year: PropTypes.number.isRequired,
     monthIndex: PropTypes.number.isRequired
-  }).isRequired
+  }).isRequired,
+  onSelect: PropTypes.func.isRequired
 };
 
 DatePicker.defaultProps = {
   calendar: {
     year: 2020,
     monthIndex: 5
+  },
+  onSelect: (event, date) => {
+    console.log(date);
   }
 };
 
