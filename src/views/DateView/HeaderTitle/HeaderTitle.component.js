@@ -6,8 +6,6 @@ import setMonth from 'date-fns/setMonth';
 import format from 'date-fns/format';
 
 import theme from './HeaderTitle.css';
-import { getMonth } from 'date-fns/esm';
-import { getYear } from 'date-fns';
 
 function HeaderTitle(props) {
   const date = setYear(setMonth(new Date(0), props.monthIndex), props.year);
