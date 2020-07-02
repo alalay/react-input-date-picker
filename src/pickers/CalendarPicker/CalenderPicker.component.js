@@ -15,6 +15,7 @@ function CalendarPicker(props) {
   };
   const [selectedDate, setSelectedDate] = useState(initialCalendarDate);
   const [calendar, setCalendar] = useState(initialCalendar);
+  const [isDateView, setDateView] = useState(true);
 
   function onSelectMonthYear(monthIndex, year) {
     setCalendar({ monthIndex, year });
@@ -28,14 +29,23 @@ function CalendarPicker(props) {
     const today = startOfDay(now);
     props.onSelectDate(event, today);
   }
-  return (
-    <div className={theme['calendar-container']}>
+
+  let viewElement;
+  if (isDateView) {
+    viewElement = (
       <DateView
         selectedDate={selectedDate}
         calendar={calendar}
         onSelectDate={onSelectDate}
         onSelectMonthYear={onSelectMonthYear}
       />
+    );
+  } else {
+    viewElement = <MonthView />;
+  }
+  return (
+    <div className={theme['calendar-container']}>
+      {viewElement}
       <div className={theme.footer}>
         <button className='btn btn-tertiary' onClick={onClickToday}>
           Today
