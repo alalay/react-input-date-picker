@@ -7,7 +7,7 @@ import '../../shared/styles/common.scss';
 function Picker(props) {
   return (
     <div className={theme.container} aria-label='Date picker'>
-      <CalendarPicker />
+      <CalendarPicker onSelectDate={(_, date) => console.log(date)} />
     </div>
   );
 }
