@@ -3,7 +3,10 @@ import addDays from 'date-fns/addDays';
 import setDay from 'date-fns/setDay';
 import format from 'date-fns/format';
 import startOfWeek from 'date-fns/startOfWeek';
-
+/**
+ * Build day names of the week
+ * @param {number} firstDayOfWeek: first day of the week
+ */
 export function buildDayNames(firstDayOfWeek = 1) {
   return new Array(7)
     .fill(0)
