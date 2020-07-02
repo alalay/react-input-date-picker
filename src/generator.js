@@ -1,5 +1,6 @@
 import chunk from 'lodash/chunk';
 import addDays from 'date-fns/addDays';
+import addMonths from 'date-fns/addMonths';
 import setDay from 'date-fns/setDay';
 import format from 'date-fns/format';
 import startOfWeek from 'date-fns/startOfWeek';
@@ -32,4 +33,18 @@ export function buildWeeks(year, monthIndex, firstDayOfWeek = 1) {
     .map((_, i) => addDays(firstDateOfCalendar, i));
 
   return chunk(dates, 7);
+}
+
+/**
+ * Generate sets of months, each set has the size of provided "chunkSize"
+ */
+export function buildMonths(chunkSize) {
+  const months = new Array(12)
+    .fill(0)
+    .map((_, i) => i)
+    .map((index) => ({
+      index,
+      name: format(addMonths(new Date(0), index), 'MMMM')
+    }));
+  return chunk(months, chunkSize);
 }
