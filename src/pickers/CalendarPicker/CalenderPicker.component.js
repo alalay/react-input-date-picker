@@ -4,6 +4,7 @@ import getMonth from 'date-fns/getMonth';
 import getYear from 'date-fns/getYear';
 import startOfDay from 'date-fns/startOfDay';
 import DateView from '../../views/DateView';
+import MonthYearView from '../../views/MonthYearView';
 
 import theme from './Calendar.scss';
 
@@ -29,6 +30,9 @@ function CalendarPicker(props) {
     const today = startOfDay(now);
     props.onSelectDate(event, today);
   }
+  function onTitleClick(event, currentMonthYear) {
+    setDateView(false);
+  }
 
   let viewElement;
   if (isDateView) {
@@ -38,10 +42,11 @@ function CalendarPicker(props) {
         calendar={calendar}
         onSelectDate={onSelectDate}
         onSelectMonthYear={onSelectMonthYear}
+        onTitleClick={onTitleClick}
       />
     );
   } else {
-    viewElement = <MonthView />;
+    viewElement = <MonthYearView />;
   }
   return (
     <div className={theme['calendar-container']}>

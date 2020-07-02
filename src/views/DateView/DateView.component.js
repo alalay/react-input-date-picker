@@ -44,7 +44,9 @@ function DateView(props) {
             </svg>
           </button>
         }
-        middle={<HeaderTitle {...props.calendar} />}
+        middle={
+          <HeaderTitle {...props.calendar} onTitleClick={props.onTitleClick} />
+        }
         right={
           <button className='btn btn-tertiary' onClick={() => goNext()}>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>

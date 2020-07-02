@@ -9,9 +9,17 @@ import theme from './HeaderTitle.css';
 function HeaderTitle(props) {
   const date = setYear(setMonth(new Date(0), props.monthIndex), props.year);
   const label = format(date, 'MMMM yyyy');
+  function onTitleClick(event) {
+    props.onTitleClick(event, {
+      monthIndex: props.monthIndex,
+      year: props.year
+    });
+  }
   return (
     <div className={theme.header}>
-      <button className='btn btn-tertiary'>{label}</button>
+      <button className='btn btn-tertiary' onClick={onTitleClick}>
+        {label}
+      </button>
     </div>
   );
 }
