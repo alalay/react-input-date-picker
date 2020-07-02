@@ -46,7 +46,14 @@ function CalendarPicker(props) {
       />
     );
   } else {
-    viewElement = <MonthYearView />;
+    viewElement = (
+      <MonthYearView
+        calendar={calendar}
+        switchToDateView={() => {
+          setDateView(true);
+        }}
+      />
+    );
   }
   return (
     <div className={theme['calendar-container']}>
