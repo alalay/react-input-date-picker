@@ -33,6 +33,9 @@ function CalendarPicker(props) {
   function onTitleClick(event, currentMonthYear) {
     setDateView(false);
   }
+  function onSelectMonth(monthIndex) {
+    setCalendar({ ...calendar, monthIndex });
+  }
 
   let viewElement;
   if (isDateView) {
@@ -52,6 +55,7 @@ function CalendarPicker(props) {
         switchToDateView={() => {
           setDateView(true);
         }}
+        onSelectMonth={onSelectMonth}
       />
     );
   }
