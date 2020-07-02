@@ -56,7 +56,7 @@ function DateView(props) {
       <DatePicker
         calendar={props.calendar}
         selectedDate={props.selectedDate}
-        onSelect={props.onSelect}
+        onSelect={props.onSelectDate}
       />
     </div>
   );
@@ -66,7 +66,8 @@ DateView.propTypes = {
     monthIndex: PropTypes.number.isRequired,
     year: PropTypes.number.isRequired
   }),
-  onSelectMonthYear: PropTypes.func
+  onSelectMonthYear: PropTypes.func,
+  onSelectDate: PropTypes.func
 };
 DateView.defaultProps = {
   onSelectMonthYear: (monthIndex, year) => {

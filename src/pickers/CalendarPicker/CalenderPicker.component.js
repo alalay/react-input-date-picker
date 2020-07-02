@@ -19,6 +19,10 @@ function CalendarPicker(props) {
   function onSelectMonthYear(monthIndex, year) {
     setCalendar({ monthIndex, year });
   }
+  function onSelectDate(event, date) {
+    setSelectedDate(date);
+    props.onSelectDate(event, date);
+  }
   function onClickToday(event) {
     const now = new Date();
     const today = startOfDay(now);
@@ -29,7 +33,7 @@ function CalendarPicker(props) {
       <DateView
         selectedDate={selectedDate}
         calendar={calendar}
-        onSelect={(_, date) => setSelectedDate(date)}
+        onSelectDate={onSelectDate}
         onSelectMonthYear={onSelectMonthYear}
       />
       <div className={theme.footer}>
@@ -43,6 +47,6 @@ function CalendarPicker(props) {
 
 CalendarPicker.propTypes = {
   onSelectDate: PropTypes.func.isRequired
-}
+};
 
 export default CalendarPicker;
