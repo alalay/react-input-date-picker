@@ -15,7 +15,7 @@ function DatePicker(props) {
   return (
     <table className={theme.container}>
       <thead>
-        <tr>
+        <tr className={theme['calendar-header']}>
           {dayNames.map((day, idx) => (
             <th key={idx}>{day.abbr}</th>
           ))}
