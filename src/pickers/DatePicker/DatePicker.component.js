@@ -1,15 +1,19 @@
 import React from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import getDate from 'date-fns/getDate';
 import { buildDayNames, buildWeeks } from '../../generator';
+
+import theme from './DatePicker.scss';
 
 function DatePicker(props) {
   const { calendar } = props;
   const { year, monthIndex } = calendar;
   const dayNames = buildDayNames();
   const weeks = buildWeeks(year, monthIndex);
+  const classname = classNames(theme['calendar-day']);
   return (
-    <table>
+    <table className={theme.container}>
       <thead>
         <tr>
           {dayNames.map((day, idx) => (
@@ -19,13 +23,13 @@ function DatePicker(props) {
       </thead>
       <tbody>
         {weeks.map((week, i) => (
-          <tr key={i}>
+          <tr key={i} className={theme['calendar-row']}>
             {week.map((date, j) => {
               const day = getDate(date);
               return (
                 <td key={j}>
                   <button
-                    className='btn btn-tertiary'
+                    className={classname}
                     onClick={(event) => props.onSelect(event, date)}
                   >
                     {day}

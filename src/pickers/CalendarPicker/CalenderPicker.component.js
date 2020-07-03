@@ -16,7 +16,7 @@ function CalendarPicker(props) {
   };
   const [selectedDate, setSelectedDate] = useState(initialCalendarDate);
   const [calendar, setCalendar] = useState(initialCalendar);
-  const [isDateView, setDateView] = useState(false);
+  const [isDateView, setDateView] = useState(true);
 
   function onSelectMonthYear(monthIndex, year) {
     setCalendar({ monthIndex, year });
