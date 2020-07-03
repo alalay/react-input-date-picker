@@ -1,27 +1,38 @@
-$gallery: #EAEAEA;
+$gallery: #eaeaea;
 $border-default: 0.1rem solid $gallery !default;
+$padding-small: 10px;
+
 @mixin picker-underline {
-	content: '';
-	border-bottom: $border-default;
+  content: '';
+  border-bottom: $border-default;
 }
 .container {
   width: 100%;
   position: relative;
 }
 .calendar-header {
-    &:after {
-		@include picker-underline;
-		width: 100%;
-		position: absolute;
-		left: 0;
-		top: 2.3rem;
-	}
+  &:after {
+    @include picker-underline;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 2.3rem;
+  }
+  th {
+    text-align: center;
+    padding-bottom: $padding-small;
+  }
+  abbr{
+    font-weight: normal;
+  }
 }
 .calendar-row {
   height: 3.6rem;
+  text-align: center;
 }
 
 .calendar-day {
+  font-size: 1.2rem;
   height: 2.4rem;
   width: 2.4rem;
   line-height: 2.4rem;

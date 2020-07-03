@@ -1,3 +1,10 @@
+// colors
+$gallery: #eaeaea;
+
+// spacing
 $padding-normal: 1.5rem;
 $padding-small: 1rem;
 $padding-smaller: 0.5rem;
+
+// border
+$border-default: 0.1rem solid $gallery !default;

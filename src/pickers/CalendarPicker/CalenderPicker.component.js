@@ -6,7 +6,7 @@ import startOfDay from 'date-fns/startOfDay';
 import DateView from '../../views/DateView';
 import MonthYearView from '../../views/MonthYearView';
 
-import theme from './Calendar.scss';
+import theme from './CalendarPicker.scss';
 
 function CalendarPicker(props) {
   const initialCalendarDate = props.selectedDate || new Date();

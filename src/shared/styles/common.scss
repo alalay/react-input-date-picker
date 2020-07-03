@@ -24,3 +24,6 @@
   line-height: 2.5rem;
   min-height: 2.5rem;
 }
+:global(table) {
+  border-spacing: 0;
+}

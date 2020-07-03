@@ -17,7 +17,9 @@ function DatePicker(props) {
       <thead>
         <tr className={theme['calendar-header']}>
           {dayNames.map((day, idx) => (
-            <th key={idx}>{day.abbr}</th>
+            <th key={idx}>
+              <abbr>{day.abbr}</abbr>
+            </th>
           ))}
         </tr>
       </thead>

@@ -1,0 +1,6 @@
+@import './variables.scss';
+
+@mixin picker-underline {
+  content: '';
+  border-bottom: $border-default;
+}

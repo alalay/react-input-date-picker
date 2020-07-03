@@ -1,0 +1,13 @@
+@import '../../shared/styles/mixins.scss';
+
+.calendar-container {
+
+}
+.footer {
+    &:before {
+        @include picker-underline;
+        display: block;
+        margin-bottom: $padding-normal;
+    }
+    padding-top: $padding-smaller;
+}
