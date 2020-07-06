@@ -10,11 +10,16 @@
   -webkit-transition: all 0.1s ease-out;
   transition: all 0.1s ease-out;
 
+  &:global(.btn-icon-only) {
+    padding: 0 5px;
+  }
+
   //TODO: refactor this 👇
   :global(svg) {
     width: 1.2rem;
     height: 1.6rem;
     vertical-align: middle;
+    margin: 0 0.4rem;
   }
 }
 :global(.btn.btn-tertiary) {
