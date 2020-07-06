@@ -2,10 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import getDate from 'date-fns/getDate';
+import getMonth from 'date-fns/getMonth';
+import isSameDay from 'date-fns/isSameDay';
 import { buildDayNames, buildWeeks } from '../../generator';
 
 import theme from './DatePicker.scss';
-import { isSameDay } from 'date-fns/esm';
 
 function DatePicker(props) {
   const { calendar } = props;
@@ -15,6 +16,9 @@ function DatePicker(props) {
   // const classname = classNames(theme['calendar-day']);
   function isSelected(date) {
     return props.selectedDate && isSameDay(props.selectedDate, date);
+  }
+  function isCurrentMonth(date) {
+    return getMonth(date) === props.calendar.monthIndex;
   }
   return (
     <table className={theme.container}>
@@ -33,8 +37,10 @@ function DatePicker(props) {
             {week.map((date, j) => {
               const day = getDate(date);
               const selected = isSelected(date);
+              const currentMonth = isCurrentMonth(date);
               const className = classNames(theme['calendar-day'], {
-                [theme.selected]: selected
+                [theme.selected]: selected,
+                [theme['not-current-month']]: !currentMonth
               });
               return (
                 <td key={j}>

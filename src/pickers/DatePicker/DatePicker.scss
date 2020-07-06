@@ -37,4 +37,8 @@
   border: none;
   border-radius: 50%;
   padding: 0;
+
+  &.not-current-month {
+    opacity: 0.54;
+  }
 }
