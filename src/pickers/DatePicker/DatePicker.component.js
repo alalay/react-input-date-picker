@@ -5,13 +5,17 @@ import getDate from 'date-fns/getDate';
 import { buildDayNames, buildWeeks } from '../../generator';
 
 import theme from './DatePicker.scss';
+import { isSameDay } from 'date-fns/esm';
 
 function DatePicker(props) {
   const { calendar } = props;
   const { year, monthIndex } = calendar;
   const dayNames = buildDayNames();
   const weeks = buildWeeks(year, monthIndex);
-  const classname = classNames(theme['calendar-day']);
+  // const classname = classNames(theme['calendar-day']);
+  function isSelected(date) {
+    return props.selectedDate && isSameDay(props.selectedDate, date);
+  }
   return (
     <table className={theme.container}>
       <thead>
@@ -28,10 +32,14 @@ function DatePicker(props) {
           <tr key={i} className={theme['calendar-row']}>
             {week.map((date, j) => {
               const day = getDate(date);
+              const selected = isSelected(date);
+              const className = classNames(theme['calendar-day'], {
+                [theme.selected]: selected
+              });
               return (
                 <td key={j}>
                   <button
-                    className={classname}
+                    className={className}
                     onClick={(event) => props.onSelect(event, date)}
                   >
                     {day}
