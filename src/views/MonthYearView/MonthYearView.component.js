@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import HeaderTitle from '../DateView/HeaderTitle';
-import MonthYearPicker from '../../pickers/MonthYearPicker';
+import MonthYearPicker from '../../pickers/MonthPicker';
 import ViewLayout from '../ViewLayout';
 
 function MonthYearView(props) {
