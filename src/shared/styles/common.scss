@@ -1,4 +1,7 @@
 // TODO: global scope?
+button {
+  color: inherit;
+}
 :global(.btn) {
   border: none;
   font-size: 14px;
@@ -22,7 +25,7 @@
     margin: 0 0.4rem;
   }
 }
-:global(.btn.btn-tertiary) {
+:global(.btn-tertiary) {
   background-color: transparent;
   box-shadow: none;
   font-weight: 600;
@@ -30,5 +33,6 @@
   min-height: 2.5rem;
 }
 :global(table) {
+  border-collapse: collapse;
   border-spacing: 0;
 }

@@ -15,19 +15,18 @@ function MonthYearPicker(props) {
       <tbody>
         {monthChunks.map((chunk, i) => (
           <tr className={theme['calendar-row']} key={i}>
-            {chunk.map((month, j) => {
-              const className = classNames(
-                theme['calendar-month'],
-                'btn',
-                'btn-tertiary'
-              );
+            {chunk.map(({ index, name }, j) => {
+              const isSelected = index === props.calendar.monthIndex;
+              const className = classNames(theme['calendar-month'], {
+                [theme.selected]: isSelected
+              });
               return (
                 <td className={theme['calendar-col']} key={j}>
                   <button
                     className={className}
-                    onClick={() => onSelectMonth(month.index)}
+                    onClick={() => onSelectMonth(index)}
                   >
-                    {month.name}
+                    {name}
                   </button>
                 </td>
               );
@@ -40,7 +39,9 @@ function MonthYearPicker(props) {
 }
 
 MonthYearPicker.propTypes = {
-  onSelectMonth: PropTypes.func.isRequired
+  onSelectMonth: PropTypes.func.isRequired,
+  selectedMonthIndex: PropTypes.number,
+  selectedYear: PropTypes.number
 };
 
 export default MonthYearPicker;

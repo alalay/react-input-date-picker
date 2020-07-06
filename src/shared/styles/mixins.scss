@@ -4,3 +4,18 @@
   content: '';
   border-bottom: $border-default;
 }
+@mixin picker-action {
+	font-size: 1.2rem;
+
+	&.selected {
+		background-color: $lochmara;
+		color: $white;
+		transition: color 0.2s ease-in;
+		font-weight: $font-weight-semi-bold;
+	}
+
+	&:disabled {
+		color: $silver-chalice;
+		opacity: 0.54;
+	}
+}

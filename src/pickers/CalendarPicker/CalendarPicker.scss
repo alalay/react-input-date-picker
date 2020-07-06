@@ -1,7 +1,7 @@
 @import '../../shared/styles/mixins.scss';
 
 .calendar-container {
-
+    color: $dove-gray;
 }
 .footer {
     &:before {
@@ -9,5 +9,5 @@
         display: block;
         margin-bottom: $padding-normal;
     }
-    padding-top: $padding-smaller;
+    padding-top: $padding-normal;
 }

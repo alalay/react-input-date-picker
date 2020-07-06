@@ -1,4 +1,4 @@
-@import '../../shared/styles/variables.scss';
+@import '../../shared/styles/mixins.scss';
 .container {
 	width: 100%;
 	tbody {
@@ -19,9 +19,13 @@
 	}
 }
 .calendar-month {
+	@include picker-action;
 
 	flex: 1;
 	height: 5.7rem;
 	width: 100%;
+	background: transparent;
+	border: none;
+	padding: 0;
 
 }
