@@ -17,8 +17,8 @@ function HeaderTitle(props) {
   }
   return (
     <div className={theme.header}>
-      <button className='btn btn-tertiary' onClick={onTitleClick}>
-        {label}
+      <button className='btn btn-info btn-tertiary' onClick={onTitleClick}>
+        <span>{label}</span>
       </button>
     </div>
   );

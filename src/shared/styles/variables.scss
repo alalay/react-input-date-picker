@@ -5,6 +5,12 @@ $white: #fff;
 $concrete: #f2f2f2;
 $silver-chalice: #ababab;
 $dove-gray: #555;
+$dark-silver: #888;
+$st-tropaz: #236192;
+
+$brand-info: $st-tropaz !default;
+$btn-default-bg: $dark-silver !default;
+$btn-info-bg: $brand-info !default;
 
 // spacing
 $padding-normal: 1.5rem;
@@ -13,6 +19,10 @@ $padding-smaller: 0.5rem;
 
 // border
 $border-default: 0.1rem solid $gallery !default;
+$btn-box-shadow-width: 3px !default;
 
 // font
 $font-weight-semi-bold: 600;
+
+$btn-tertiary-line-height: 2.5rem !default;
+$btn-tertiary-font-weight: $font-weight-semi-bold !default;

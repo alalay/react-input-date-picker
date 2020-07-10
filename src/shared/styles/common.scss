@@ -1,7 +1,65 @@
 @import './variables.scss';
-// TODO: global scope?
-$dark-silver: #888;
-$btn-default-bg: $dark-silver !default;
+
+@mixin btn-colors($btn-bg: $btn-default-bg) {
+  box-shadow: 0 (-1 * $btn-box-shadow-width) 0 rgba(0, 0, 0, 0.15) inset;
+
+  &:focus,
+  &.focus,
+  &:hover {
+    background-color: $btn-bg;
+    border-color: $btn-bg;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    &,
+    &.focus,
+    &:focus,
+    &:hover {
+      opacity: 1;
+      background-color: shade($btn-bg, 12%);
+      border-color: shade($btn-bg, 12%);
+      box-shadow: none;
+    }
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus {
+      opacity: 0.4;
+    }
+  }
+}
+@mixin btn-tertiary-colors($color: $btn-default-bg) {
+  &:global(.btn-tertiary) {
+    background-color: transparent;
+    box-shadow: none;
+    font-weight: $btn-tertiary-font-weight;
+    line-height: $btn-tertiary-line-height;
+    min-height: $btn-tertiary-line-height;
+    padding: 0 $padding-small;
+    transition: background 0.2s ease-in;
+    color: $color;
+    &:hover,
+    &:focus {
+      color: $color;
+      background: tint($color, 90%);
+    }
+    &:active {
+      background: tint($color, 80%);
+    }
+  }
+}
+
 button {
   color: inherit;
 }
@@ -27,6 +85,11 @@ button {
     vertical-align: middle;
     margin: 0 0.4rem;
   }
+  & > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 :global(.btn-tertiary) {
   background-color: transparent;
@@ -40,6 +103,10 @@ button {
     background: $concrete;
     opacity: 0.8;
   }
+}
+:global(.btn-info) {
+  @include btn-colors($btn-info-bg);
+  @include btn-tertiary-colors($btn-info-bg)
 }
 :global(table) {
   border-collapse: collapse;
