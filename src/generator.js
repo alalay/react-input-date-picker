@@ -2,6 +2,7 @@ import chunk from 'lodash/chunk';
 import addDays from 'date-fns/addDays';
 import addMonths from 'date-fns/addMonths';
 import setDay from 'date-fns/setDay';
+import getYear from 'date-fns/getYear';
 import format from 'date-fns/format';
 import startOfWeek from 'date-fns/startOfWeek';
 /**
@@ -47,4 +48,14 @@ export function buildMonths(chunkSize) {
       name: format(addMonths(new Date(0), index), 'MMMM')
     }));
   return chunk(months, chunkSize);
+}
+
+export function buildYears(middle = getYear(new Date()), window = 3) {
+  const start = middle - window;
+  const end = middle + window;
+  const years = [];
+  for (let i = start; i <= end; i += 1) {
+    years.push(i);
+  }
+  return years;
 }

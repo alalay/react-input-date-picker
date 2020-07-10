@@ -1,9 +1,10 @@
 import React from 'react';
 
 import theme from './YearPicker.scss';
+import { buildYears } from '../../generator';
 
 function YearPicker() {
-  const years = ['2018', '2019', '2020', '2021'];
+  const years = buildYears();
   return (
     <div className={theme['year-picker']}>
       <ol>
