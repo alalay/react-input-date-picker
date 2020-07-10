@@ -35,9 +35,11 @@ button {
   line-height: 2.5rem;
   min-height: 2.5rem;
 }
-:global(.btn-default.btn-tertiary:hover) {
+:global(.btn-default) {
+  &:hover {
     background: $concrete;
     opacity: 0.8;
+  }
 }
 :global(table) {
   border-collapse: collapse;
