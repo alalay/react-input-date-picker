@@ -80,6 +80,7 @@ button {
 
   //TODO: refactor this 👇
   :global(svg) {
+    fill: currentColor;
     width: 1.2rem;
     height: 1.6rem;
     vertical-align: middle;
