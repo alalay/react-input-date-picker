@@ -22,7 +22,18 @@ function YearPicker(props) {
   }
   return (
     <div className={theme['year-picker']}>
-      <button onClick={onScrollUp}>up</button>
+      <button
+        className='btn btn-info btn-tertiary btn-icon-only'
+        onClick={onScrollUp}
+      >
+        <svg
+          className='rotate-90'
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 16 16'
+        >
+          <path d='M10.914 15.936L2.979 8 10.914.064l2.107 2.108L7.193 8l5.828 5.828-2.107 2.108z' />
+        </svg>
+      </button>
       <ol>
         {years.map((year, index) => (
           <li key={index}>
@@ -35,7 +46,18 @@ function YearPicker(props) {
           </li>
         ))}
       </ol>
-      <button onClick={onScrollDown}>down</button>
+      <button
+        className='btn btn-info btn-tertiary btn-icon-only'
+        onClick={onScrollDown}
+      >
+        <svg
+          className='rotate-b-90'
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 16 16'
+        >
+          <path d='M10.914 15.936L2.979 8 10.914.064l2.107 2.108L7.193 8l5.828 5.828-2.107 2.108z' />
+        </svg>
+      </button>
     </div>
   );
 }
