@@ -24,7 +24,14 @@ function HeaderTitle(props) {
       <div className={theme.header}>
         <span>{monthLabel}</span>
         <Dropdown label={yearLabel}>
-          <YearPicker onSelect={props.onSelectYear} />
+          {(onSelect) => (
+            <YearPicker
+              onSelect={(event, year) => {
+                props.onSelectYear(event, year);
+                onSelect();
+              }}
+            />
+          )}
         </Dropdown>
       </div>
     );

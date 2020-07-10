@@ -8,6 +8,9 @@ function Dropdown(props) {
   function onToggle() {
     setOpen(!isOpen);
   }
+  function onSelect() {
+    setOpen(false);
+  }
   return (
     <div className={dropdownClass}>
       <div>
@@ -15,7 +18,7 @@ function Dropdown(props) {
           {label}
         </button>
       </div>
-      <div className='dropdown-menu'>{children}</div>
+      <div className='dropdown-menu'>{children(onSelect)}</div>
     </div>
   );
 }
