@@ -24,7 +24,7 @@ function HeaderTitle(props) {
       <div className={theme.header}>
         <span>{monthLabel}</span>
         <Dropdown label={yearLabel}>
-          <YearPicker />
+          <YearPicker onSelect={props.onSelectYear} />
         </Dropdown>
       </div>
     );
@@ -39,9 +39,10 @@ function HeaderTitle(props) {
 }
 
 HeaderTitle.protoType = {
-  monthIndex: PropTypes.number,
-  year: PropTypes.number,
-  yearPicker: PropTypes.bool
+  monthIndex: PropTypes.number.isRequired,
+  year: PropTypes.number.isRequired,
+  yearPicker: PropTypes.bool,
+  onSelectYear: PropTypes.func.isRequired
 };
 
 export default HeaderTitle;

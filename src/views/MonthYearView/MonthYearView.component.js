@@ -23,7 +23,13 @@ function MonthYearView(props) {
         </svg>
       </button>
     ),
-    middleElement: <HeaderTitle {...props.calendar} yearPicker />
+    middleElement: (
+      <HeaderTitle
+        {...props.calendar}
+        yearPicker
+        onSelectYear={props.onSelectYear}
+      />
+    )
   };
   const bodyElement = (
     <MonthYearPicker calendar={props.calendar} onSelectMonth={onSelectMonth} />

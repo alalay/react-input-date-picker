@@ -36,6 +36,9 @@ function CalendarPicker(props) {
   function onSelectMonth(monthIndex) {
     setCalendar({ ...calendar, monthIndex });
   }
+  function onSelectYear(event, year) {
+    setCalendar({ ...calendar, year });
+  }
 
   let viewElement;
   if (isDateView) {
@@ -56,6 +59,7 @@ function CalendarPicker(props) {
           setDateView(true);
         }}
         onSelectMonth={onSelectMonth}
+        onSelectYear={onSelectYear}
       />
     );
   }
