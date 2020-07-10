@@ -14,6 +14,8 @@ function Dropdown(props) {
   }
   useEffect(() => {
     document.addEventListener('click', handleDocumentClick, false);
+    return () =>
+      document.removeEventListener('click', handleDocumentClick, false);
   });
   function onToggle() {
     setOpen(!isOpen);
