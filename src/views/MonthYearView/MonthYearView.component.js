@@ -15,7 +15,7 @@ function MonthYearView(props) {
   const header = {
     leftElement: (
       <button
-        className='btn btn-tertiary btn-icon-only'
+        className='btn btn-info btn-tertiary btn-icon-only'
         onClick={goToMonthDate}
       >
         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
