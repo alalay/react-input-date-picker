@@ -28,10 +28,10 @@ function DateView(props) {
 
     selectMonth(nextMonthIndex, nextYear);
   }
-  function goPrevious() {
+  function goToPreviousMonth() {
     incrementMonthIndex(-1);
   }
-  function goNext() {
+  function goToNextMonth() {
     incrementMonthIndex(1);
   }
 
@@ -39,7 +39,7 @@ function DateView(props) {
     leftElement: (
       <button
         className='btn btn-info btn-tertiary btn-icon-only'
-        onClick={() => goPrevious()}
+        onClick={() => goToPreviousMonth()}
       >
         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
           <path d='M15 7H4.4l4-4L7 1.6.6 8 7 14.4 8.4 13l-4-4H15z' />
@@ -52,7 +52,7 @@ function DateView(props) {
     rightElement: (
       <button
         className='btn btn-info btn-tertiary btn-icon-only'
-        onClick={() => goNext()}
+        onClick={() => goToNextMonth()}
       >
         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
           <path d='M1 9h10.7l-4 4 1.4 1.4L15.5 8 9.1 1.6 7.7 3l4 4H1z' />
@@ -65,6 +65,8 @@ function DateView(props) {
       calendar={props.calendar}
       selectedDate={props.selectedDate}
       onSelect={props.onSelectDate}
+      goToPreviousMonth={goToPreviousMonth}
+      goToNextMonth={goToNextMonth}
     />
   );
   return (

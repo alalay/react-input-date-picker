@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import getDate from 'date-fns/getDate';
 import getMonth from 'date-fns/getMonth';
 import isSameDay from 'date-fns/isSameDay';
+import startOfMonth from 'date-fns/startOfMonth';
 import { buildDayNames, buildWeeks } from '../../generator';
 
 import theme from './DatePicker.scss';
@@ -18,6 +19,16 @@ function DatePicker(props) {
   }
   function isCurrentMonth(date) {
     return getMonth(date) === props.calendar.monthIndex;
+  }
+  function onSelectDate(event, date, monthIndex, year) {
+    if (!isCurrentMonth(date)) {
+      if (date < startOfMonth(new Date(year, monthIndex))) {
+        props.goToPreviousMonth();
+      } else {
+        props.goToNextMonth();
+      }
+    }
+    props.onSelect(event, date);
   }
   return (
     <table className={theme.container}>
@@ -50,7 +61,9 @@ function DatePicker(props) {
                 <td key={j}>
                   <button
                     className={className}
-                    onClick={(event) => props.onSelect(event, date)}
+                    onClick={(event) =>
+                      onSelectDate(event, date, monthIndex, year)
+                    }
                   >
                     {day}
                   </button>
@@ -69,7 +82,9 @@ DatePicker.propTypes = {
     year: PropTypes.number.isRequired,
     monthIndex: PropTypes.number.isRequired
   }).isRequired,
-  onSelect: PropTypes.func.isRequired
+  onSelect: PropTypes.func.isRequired,
+  goToPreviousMonth: PropTypes.func.isRequired,
+  goToNextMonth: PropTypes.func.isRequired
 };
 
 DatePicker.defaultProps = {
