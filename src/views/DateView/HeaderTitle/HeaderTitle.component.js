@@ -15,6 +15,9 @@ function HeaderTitle(props) {
       year: props.year
     });
   }
+  if (props.yearPicker) {
+    return <p>hello</p>;
+  }
   return (
     <div className={theme.header}>
       <button className='btn btn-info btn-tertiary' onClick={onTitleClick}>
@@ -26,7 +29,8 @@ function HeaderTitle(props) {
 
 HeaderTitle.protoType = {
   monthIndex: PropTypes.number,
-  year: PropTypes.number
+  year: PropTypes.number,
+  yearPicker: PropTypes.bool
 };
 
 export default HeaderTitle;
