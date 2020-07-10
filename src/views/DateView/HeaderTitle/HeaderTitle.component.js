@@ -5,10 +5,14 @@ import setMonth from 'date-fns/setMonth';
 import format from 'date-fns/format';
 
 import theme from './HeaderTitle.css';
+import Dropdown from '../Dropdown/Dropdown.component';
+import YearPicker from '../../../pickers/YearPicker';
 
 function HeaderTitle(props) {
   const date = setYear(setMonth(new Date(0), props.monthIndex), props.year);
   const label = format(date, 'MMMM yyyy');
+  const monthLabel = format(date, 'MMMM');
+  const yearLabel = format(date, 'yyyy');
   function onTitleClick(event) {
     props.onTitleClick(event, {
       monthIndex: props.monthIndex,
@@ -16,7 +20,14 @@ function HeaderTitle(props) {
     });
   }
   if (props.yearPicker) {
-    return <p>hello</p>;
+    return (
+      <div className={theme.header}>
+        <span>{monthLabel}</span>
+        <Dropdown label={yearLabel}>
+          <YearPicker />
+        </Dropdown>
+      </div>
+    );
   }
   return (
     <div className={theme.header}>
