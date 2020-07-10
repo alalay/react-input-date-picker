@@ -1,4 +1,7 @@
+@import './variables.scss';
 // TODO: global scope?
+$dark-silver: #888;
+$btn-default-bg: $dark-silver !default;
 button {
   color: inherit;
 }
@@ -31,6 +34,10 @@ button {
   font-weight: 600;
   line-height: 2.5rem;
   min-height: 2.5rem;
+}
+:global(.btn-default.btn-tertiary:hover) {
+    background: $concrete;
+    opacity: 0.8;
 }
 :global(table) {
   border-collapse: collapse;

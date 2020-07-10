@@ -13,7 +13,6 @@ function DatePicker(props) {
   const { year, monthIndex } = calendar;
   const dayNames = buildDayNames();
   const weeks = buildWeeks(year, monthIndex);
-  // const classname = classNames(theme['calendar-day']);
   function isSelected(date) {
     return props.selectedDate && isSameDay(props.selectedDate, date);
   }
@@ -38,10 +37,15 @@ function DatePicker(props) {
               const day = getDate(date);
               const selected = isSelected(date);
               const currentMonth = isCurrentMonth(date);
-              const className = classNames(theme['calendar-day'], {
-                [theme.selected]: selected,
-                [theme['not-current-month']]: !currentMonth
-              });
+              const className = classNames(
+                theme['calendar-day'],
+                {
+                  [theme.selected]: selected,
+                  [theme['not-current-month']]: !currentMonth
+                },
+                'btn-default',
+                'btn-tertiary'
+              );
               return (
                 <td key={j}>
                   <button
