@@ -20,6 +20,17 @@ function YearPicker(props) {
   function onScrollDown() {
     scroll(1);
   }
+  function onWheel(event) {
+    event.preventDefault();
+
+    const { deltaY } = event;
+    const absolutePace = Math.round(Math.log(Math.abs(deltaY)));
+    let pace = deltaY > 0 ? 1 : -1;
+    if (absolutePace > 5) {
+      pace *= Math.floor(absolutePace / 2);
+    }
+    scroll(pace);
+  }
   return (
     <div className={theme['year-picker']}>
       <button
@@ -34,7 +45,7 @@ function YearPicker(props) {
           <path d='M10.914 15.936L2.979 8 10.914.064l2.107 2.108L7.193 8l5.828 5.828-2.107 2.108z' />
         </svg>
       </button>
-      <ol>
+      <ol onWheel={onWheel}>
         {years.map((year, index) => (
           <li key={index}>
             <button
