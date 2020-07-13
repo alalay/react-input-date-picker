@@ -22,7 +22,7 @@ function HeaderTitle(props) {
   if (props.yearPicker) {
     return (
       <div className={theme.header}>
-        <span>{monthLabel}</span>
+        <span className={theme.month}>{monthLabel}</span>
         <Dropdown label={yearLabel}>
           {(onSelect) => (
             <YearPicker
