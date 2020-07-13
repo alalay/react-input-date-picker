@@ -67,7 +67,7 @@ function CalendarPicker(props) {
     <div className={theme['calendar-container']}>
       {viewElement}
       <div className={theme.footer}>
-        <button className='btn btn-tertiary' onClick={onClickToday}>
+        <button className='btn btn-info btn-tertiary' onClick={onClickToday}>
           Today
         </button>
       </div>
