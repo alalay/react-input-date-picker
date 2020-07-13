@@ -1,4 +1,8 @@
 .year-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   ol {
     list-style: none;
     margin-block-start: 0px;
