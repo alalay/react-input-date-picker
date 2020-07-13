@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import getDate from 'date-fns/getDate';
 import getMonth from 'date-fns/getMonth';
 import isSameDay from 'date-fns/isSameDay';
+import isToday from 'date-fns/isToday';
 import startOfMonth from 'date-fns/startOfMonth';
 import { buildDayNames, buildWeeks } from '../../generator';
 
@@ -52,7 +53,8 @@ function DatePicker(props) {
                 theme['calendar-day'],
                 {
                   [theme.selected]: selected,
-                  [theme['not-current-month']]: !currentMonth
+                  [theme['not-current-month']]: !currentMonth,
+                  [theme.today]: isToday(date)
                 },
                 'btn-default',
                 'btn-tertiary'
