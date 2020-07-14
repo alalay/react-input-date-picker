@@ -28,7 +28,7 @@ function CalendarPicker(props) {
   function onClickToday(event) {
     const now = new Date();
     const today = startOfDay(now);
-    props.onSelectDate(event, today);
+    onSelectDate(event, today);
   }
   function onTitleClick(event, currentMonthYear) {
     setDateView(false);
