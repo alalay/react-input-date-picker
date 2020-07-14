@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import getMonth from 'date-fns/getMonth';
 import getYear from 'date-fns/getYear';
@@ -18,7 +18,7 @@ function CalendarPicker(props) {
   const [calendar, setCalendar] = useState(initialCalendar);
   const [isDateView, setDateView] = useState(true);
 
-  function onSelectMonthYear(monthIndex, year) {
+  function onSelectMonthYear(monthIndex, year, callback) {
     setCalendar({ monthIndex, year });
   }
   function onSelectDate(event, date) {

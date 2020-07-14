@@ -54,6 +54,7 @@
   ],
   "dependencies": {
     "date-fns": "^2.14.0",
+    "keycode": "^2.2.0",
     "lodash": "^4.17.15"
   }
 }

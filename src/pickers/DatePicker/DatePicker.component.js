@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import getDate from 'date-fns/getDate';
@@ -7,11 +7,13 @@ import isSameDay from 'date-fns/isSameDay';
 import isToday from 'date-fns/isToday';
 import startOfMonth from 'date-fns/startOfMonth';
 import { buildDayNames, buildWeeks } from '../../generator';
+import { withCalendarGesture } from '../../gesture/withCalendarGesture';
 
 import theme from './DatePicker.scss';
 
 function DatePicker(props) {
   const { calendar } = props;
+  const calendarRef = useRef(null);
   const { year, monthIndex } = calendar;
   const dayNames = buildDayNames();
   const weeks = buildWeeks(year, monthIndex);
@@ -32,7 +34,7 @@ function DatePicker(props) {
     props.onSelect(event, date);
   }
   return (
-    <table className={theme.container}>
+    <table className={theme.container} ref={calendarRef}>
       <thead>
         <tr className={theme['calendar-header']}>
           {dayNames.map((day, idx) => (
@@ -59,6 +61,9 @@ function DatePicker(props) {
                 'btn-default',
                 'btn-tertiary'
               );
+              const buttonProps = currentMonth
+                ? { 'data-value': day }
+                : undefined;
               return (
                 <td key={j}>
                   <button
@@ -66,6 +71,10 @@ function DatePicker(props) {
                     onClick={(event) =>
                       onSelectDate(event, date, monthIndex, year)
                     }
+                    onKeyDown={(event) =>
+                      props.onKeyDown(event, calendarRef.current, day - 1)
+                    }
+                    {...buttonProps}
                   >
                     {day}
                   </button>
@@ -85,6 +94,7 @@ DatePicker.propTypes = {
     monthIndex: PropTypes.number.isRequired
   }).isRequired,
   onSelect: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func.isRequired,
   goToPreviousMonth: PropTypes.func.isRequired,
   goToNextMonth: PropTypes.func.isRequired
 };
@@ -95,4 +105,4 @@ DatePicker.defaultProps = {
   }
 };
 
-export default DatePicker;
+export default withCalendarGesture(DatePicker);
