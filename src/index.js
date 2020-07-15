@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.module.css';
-import InputDatePicker from './InputDatePicker.component';
+import InputDatePicker from './InputDatePicker';
 import Picker from './InputDatePicker/Picker';
 import Input from './InputDatePicker/Input';
 

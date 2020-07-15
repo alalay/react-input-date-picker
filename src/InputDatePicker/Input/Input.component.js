@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-function Input() {
-  return <input />;
-}
+const Input = forwardRef((props, ref) => {
+  return <input {...props} ref={ref} />;
+});
 
 Input.displayName = 'Date.Input';
 
