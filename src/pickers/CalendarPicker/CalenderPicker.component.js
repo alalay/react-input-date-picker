@@ -18,12 +18,16 @@ function CalendarPicker(props) {
   const [calendar, setCalendar] = useState(initialCalendar);
   const [isDateView, setDateView] = useState(true);
 
+  function onSubmit(event, date) {
+    props.onSubmit(event, { date });
+  }
+
   function onSelectMonthYear(monthIndex, year, callback) {
     setCalendar({ monthIndex, year });
   }
   function onSelectDate(event, date) {
     setSelectedDate(date);
-    props.onSelectDate(event, date);
+    onSubmit(event, date);
   }
   function onClickToday(event) {
     const now = new Date();
@@ -76,7 +80,7 @@ function CalendarPicker(props) {
 }
 
 CalendarPicker.propTypes = {
-  onSelectDate: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default CalendarPicker;

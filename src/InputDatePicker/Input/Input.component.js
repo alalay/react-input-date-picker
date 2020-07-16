@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext } from 'react';
-import { DateContext } from './Context';
+import { DateContext } from '../Context';
 
 const Input = forwardRef((props, ref) => {
   const { value } = useContext(DateContext);
