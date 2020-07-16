@@ -1,29 +1,29 @@
 import React, { useRef, useState } from 'react';
 import { Popper } from 'react-popper';
 
+import FocusManager from '../FocusManager';
 import Input from './Input';
+import Picker from './Picker';
 
 function InputDatePicker(props) {
   const inputRef = useRef(null);
   const [showPicker, togglePicker] = useState(false);
   return (
-    <div>
-      <Input
-        ref={inputRef}
-        onFocus={() => {
-          togglePicker(true);
-        }}
-      />
+    <FocusManager
+      onFocusIn={() => togglePicker(true)}
+      onFocusOut={() => togglePicker(false)}
+    >
+      <Input ref={inputRef} />
       {showPicker && (
         <Popper referenceElement={inputRef.current} placement='bottom'>
           {({ style, ref }) => (
             <div style={style} ref={ref}>
-              <p style={{ border: 'solid 1px black' }}>hello world</p>
+              <Picker />
             </div>
           )}
         </Popper>
       )}
-    </div>
+    </FocusManager>
   );
 }
 
