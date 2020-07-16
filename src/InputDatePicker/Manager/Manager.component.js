@@ -8,6 +8,7 @@ function Manager(props) {
   function onPickerChange(event, { date }) {
     const nextState = extractFromDate(date);
     setState(nextState);
+    props.onChange(event);
   }
   return (
     <DateContext.Provider

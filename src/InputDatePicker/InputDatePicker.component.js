@@ -9,12 +9,24 @@ import Manager from './Manager/Manager.component';
 function InputDatePicker(props) {
   const inputRef = useRef(null);
   const [showPicker, togglePicker] = useState(false);
+  const [picked, setPicked] = useState(false);
+
+  function openPicker() {
+    togglePicker(true);
+  }
+
+  function closePicker() {
+    togglePicker(false);
+  }
+
+  function onChange(event) {
+    inputRef.current.focus();
+    setPicked(true);
+    closePicker();
+  }
   return (
-    <Manager>
-      <FocusManager
-        onFocusIn={() => togglePicker(true)}
-        onFocusOut={() => togglePicker(false)}
-      >
+    <Manager onChange={onChange}>
+      <FocusManager onFocusIn={openPicker} onFocusOut={closePicker}>
         <Input ref={inputRef} />
         {showPicker && (
           <Popper referenceElement={inputRef.current} placement='bottom'>
