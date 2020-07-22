@@ -19,16 +19,11 @@ const MenuContainer = React.forwardRef(({ show, children }, ref) => {
   );
 });
 
-function Menu() {
+function Menu({ children }) {
   const { show, close, props } = useDropdownMenu();
   return (
     <MenuContainer {...props} show={show}>
-      <button type='button' onClick={close}>
-        item 1
-      </button>
-      <button type='button' onClick={close}>
-        item 2
-      </button>
+      {children}
     </MenuContainer>
   );
 }
@@ -47,7 +42,16 @@ function DropdownButton({ title }) {
       {({ props }) => (
         <div {...props}>
           <Toggle>{title}</Toggle>
-          <Menu />
+          <Dropdown.Menu>
+            {({ props: menuProps }) =>
+              React.forwardRef((props, ref) => (
+                <div ref={ref} {...menuProps}>
+                  <button type='button'>item 1</button>
+                  <button type='button'>item 2</button>
+                </div>
+              ))
+            }
+          </Dropdown.Menu>
         </div>
       )}
     </Dropdown>
