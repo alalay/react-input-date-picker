@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import classNames from 'classnames';
+import YearPicker from '../../../pickers/YearPicker';
 
 function Dropdown(props) {
   const { label, children } = props;
@@ -20,17 +21,34 @@ function Dropdown(props) {
   function onToggle() {
     setOpen(!isOpen);
   }
-  function onSelect() {
-    setOpen(false);
-  }
+  // function onSelect(...args) {
+  //   if (props.onSelect) {
+  //     props.onSelect(...args);
+  //   }
+  //   // setOpen(false);
+  // }
+  const onSelect = useCallback((...args) => {
+    if (props.onSelect) {
+      props.onSelect(...args);
+    }
+    // setOpen(false);
+  });
   return (
-    <div className={dropdownClass} ref={ref}>
+    <div
+      className={dropdownClass}
+      ref={ref}
+      onFocus={() => {
+        console.log('onFocus dropdown');
+      }}
+    >
       <div>
         <button className='btn btn-info btn-tertiary' onClick={onToggle}>
-          {label}
+          {children}
         </button>
       </div>
-      <div className='dropdown-menu'>{children(onSelect)}</div>
+      <div className='dropdown-menu'>
+        <YearPicker />
+      </div>
     </div>
   );
 }

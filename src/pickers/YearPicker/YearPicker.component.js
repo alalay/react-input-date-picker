@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 
 import { buildYears } from '../../generator';
 
@@ -47,7 +47,7 @@ function YearPicker(props) {
       </button>
       <ol onWheel={onWheel}>
         {years.map((year, index) => (
-          <li key={index}>
+          <li key={index} onFocus={() => console.log('onFocus lit')}>
             <button
               className='btn btn-default btn-tertiary'
               onClick={(event) => props.onSelect(event, year)}
@@ -56,6 +56,7 @@ function YearPicker(props) {
             </button>
           </li>
         ))}
+        {Math.random()}
       </ol>
       <button
         className='btn btn-info btn-tertiary btn-icon-only'
@@ -73,4 +74,4 @@ function YearPicker(props) {
   );
 }
 
-export default YearPicker;
+export default memo(YearPicker);

@@ -1,12 +1,15 @@
 import React from 'react';
 
-import InputDatePicker from 'react-input-date-picker';
+import InputDatePicker, { DropdownButton } from 'react-input-date-picker';
 import 'react-input-date-picker/dist/index.css';
 
 const App = () => {
-  return <div>
-    <InputDatePicker />
-  </div>;
+  return (
+    <div>
+      <InputDatePicker />
+      <DropdownButton title='dropdown'/>
+    </div>
+  );
 };
 
 export default App;
