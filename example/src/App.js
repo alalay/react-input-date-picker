@@ -7,7 +7,10 @@ const App = () => {
   return (
     <div>
       <InputDatePicker />
-      <DropdownButton title='dropdown'/>
+      <DropdownButton title='dropdown'>
+        <button type='button'>item 1</button>
+        <button type='button'>item 2</button>
+      </DropdownButton>
     </div>
   );
 };

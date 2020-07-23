@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown, useDropdownToggle, useDropdownMenu } from 'react-overlays';
 
-const MenuContainer = React.forwardRef(({ show, children }, ref) => {
+const MenuContainer = React.forwardRef(({ show, children, onClick }, ref) => {
   const style = {
     display: show ? 'flex' : 'none',
     minWidth: '150px',
@@ -13,7 +13,7 @@ const MenuContainer = React.forwardRef(({ show, children }, ref) => {
     boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)'
   };
   return (
-    <div style={style} ref={ref}>
+    <div style={style} ref={ref} onClick={onClick}>
       {children}
     </div>
   );
@@ -22,7 +22,7 @@ const MenuContainer = React.forwardRef(({ show, children }, ref) => {
 function Menu({ children }) {
   const { show, close, props } = useDropdownMenu();
   return (
-    <MenuContainer {...props} show={show}>
+    <MenuContainer {...props} show={show} onClick={close}>
       {children}
     </MenuContainer>
   );
@@ -36,22 +36,13 @@ function Toggle({ children }) {
   );
 }
 
-function DropdownButton({ title }) {
+function DropdownButton({ title, children }) {
   return (
     <Dropdown>
       {({ props }) => (
         <div {...props}>
           <Toggle>{title}</Toggle>
-          <Dropdown.Menu>
-            {({ props: menuProps }) =>
-              React.forwardRef((props, ref) => (
-                <div ref={ref} {...menuProps}>
-                  <button type='button'>item 1</button>
-                  <button type='button'>item 2</button>
-                </div>
-              ))
-            }
-          </Dropdown.Menu>
+          <Menu>{children}</Menu>
         </div>
       )}
     </Dropdown>

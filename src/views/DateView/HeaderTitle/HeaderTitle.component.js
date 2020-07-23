@@ -5,12 +5,13 @@ import setMonth from 'date-fns/setMonth';
 import format from 'date-fns/format';
 
 import theme from './HeaderTitle.scss';
-// import Dropdown from '../Dropdown/Dropdown.component';
+import Dropdown from '../Dropdown/Dropdown.component';
 // import DropdownButton from 'react-bootstrap/lib/DropdownButton';
-import Dropdown from 'react-overlays/Dropdown';
+// import Dropdown from 'react-overlays/Dropdown';
 import DropdownMenu from 'react-overlays/DropdownMenu';
 import DropdownToggle from 'react-overlays/DropdownToggle';
 import YearPicker from '../../../pickers/YearPicker';
+import DropdownButton from '../DropdownButton/DropdownButton';
 
 function HeaderTitle(props) {
   const date = setYear(setMonth(new Date(0), props.monthIndex), props.year);
@@ -27,12 +28,9 @@ function HeaderTitle(props) {
     return (
       <div className={theme.header}>
         <span className={theme.month}>{monthLabel}</span>
-        <Dropdown>
-          <DropdownToggle>{yearLabel}</DropdownToggle>
-          <DropdownMenu>
-            <YearPicker onSelect={props.onSelectYear} />
-          </DropdownMenu>
-        </Dropdown>
+        <DropdownButton title={yearLabel}>
+          <YearPicker onSelect={props.onSelectYear} />
+        </DropdownButton>
       </div>
     );
   }
