@@ -28,9 +28,10 @@ function HeaderTitle(props) {
     return (
       <div className={theme.header}>
         <span className={theme.month}>{monthLabel}</span>
-        <DropdownButton title={yearLabel}>
+        <span>{Math.random()}</span>
+        <Dropdown title={yearLabel}>
           <YearPicker onSelect={props.onSelectYear} />
-        </DropdownButton>
+        </Dropdown>
       </div>
     );
   }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import classNames from 'classnames';
-import YearPicker from '../../../pickers/YearPicker';
 
 function Dropdown(props) {
   const { title, children } = props;
@@ -34,7 +33,7 @@ function Dropdown(props) {
     <div className={dropdownClass} ref={ref}>
       <div>
         <button className='btn btn-info btn-tertiary' onClick={onToggle}>
-         123
+         {title}
         </button>
       </div>
       <div className='dropdown-menu'>
