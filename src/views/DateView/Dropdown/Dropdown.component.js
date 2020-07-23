@@ -20,20 +20,15 @@ function Dropdown(props) {
   function onToggle() {
     setOpen(!isOpen);
   }
-  // function onSelect(...args) {
-  //   if (props.onSelect) {
-  //     props.onSelect(...args);
-  //   }
-  //   // setOpen(false);
-  // }
+
   const onSelect = useCallback((...args) => {
-    // setOpen(false);
+    setOpen(false);
   });
   return (
     <div className={dropdownClass} ref={ref}>
       <div>
         <button className='btn btn-info btn-tertiary' onClick={onToggle}>
-         {title}
+          {title}
         </button>
       </div>
       <div className='dropdown-menu'>
