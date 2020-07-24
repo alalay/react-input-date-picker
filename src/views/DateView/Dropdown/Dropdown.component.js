@@ -1,5 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, {
+  useState,
+  useContext,
+  useCallback,
+  useMemo,
+  useEffect,
+  useRef
+} from 'react';
 import classNames from 'classnames';
+import useEventCallback from '@restart/hooks/useEventCallback';
+import useCallbackRef from '@restart/hooks/useCallbackRef';
 
 import DropdownContext from './DropdownContext';
 
@@ -11,7 +20,7 @@ function useDropdownMenu() {
   };
 }
 function Menu({ children }) {
-  const { show, close, props } = useDropdownMenu();
+  const { show, close } = useDropdownMenu();
   const dropdownClass = classNames('dropdown-menu', { open: show });
   return (
     <div className={dropdownClass} onClick={close}>
@@ -35,11 +44,37 @@ function Toggle({ children }) {
 
 function Dropdown({ children }) {
   const [show, onToggle] = useState(false);
+  const focusInDropdown = useRef(false);
 
-  const context = {
-    show,
-    toggle: () => onToggle(!show)
-  };
+  const toggle = useCallback(() => onToggle(!show), [onToggle, show]);
+
+
+  const maybeFocusFirst = useEventCallback(() => {});
+  const [toggleElement, setToggle] = useCallbackRef();
+
+  const focusToggle = useEventCallback(() => {
+    if (toggleElement && toggleElement.focus) {
+      toggleElement.focus();
+    }
+  });
+
+  useEffect(() => {
+    if (show) maybeFocusFirst();
+    else if (focusInDropdown.current) {
+      focusInDropdown.current = false;
+      focusToggle();
+    }
+    // only `show` should be changing
+  }, [show, focusInDropdown, focusToggle, maybeFocusFirst]);
+
+  const context = useMemo(
+    () => ({
+      show,
+      toggle,
+      setToggle
+    }),
+    [show, toggle, setToggle]
+  );
   return (
     <DropdownContext.Provider value={context}>
       {children({ props: { onKeyDown: () => {} } })}

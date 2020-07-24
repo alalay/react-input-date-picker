@@ -56,7 +56,6 @@ function YearPicker(props) {
             </button>
           </li>
         ))}
-        {Math.random()}
       </ol>
       <button
         className='btn btn-info btn-tertiary btn-icon-only'
