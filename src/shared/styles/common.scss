@@ -124,13 +124,12 @@ button {
 :global(.dropdown) {
   position: relative;
 
-  &:global(.open) {
-    :global(.dropdown-menu) {
+
+    :global(.dropdown-menu.open) {
       display: block;
       opacity: 1;
       transform: translateY(0);
     }
-  }
 }
 :global(.dropdown-menu) {
   margin: 0;
