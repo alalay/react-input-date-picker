@@ -1,7 +1,23 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import classNames from 'classnames';
+import { useUncontrolledProp } from 'uncontrollable';
 
-function Dropdown(props) {
+import DropdownContext from './DropdownContext';
+
+function Dropdown({ children }) {
+  const [show, onToggle] = useState(false);
+  const context = {
+    show,
+    toggle: () => onToggle(!show)
+  };
+  return (
+    <DropdownContext.Provider value={context}>
+      {children({ props: { onKeyDown: () => {} } })}
+    </DropdownContext.Provider>
+  );
+}
+
+function DropdownButton(props) {
   const { title, children } = props;
   const [isOpen, setOpen] = useState(false);
   const ref = useRef(null);
@@ -38,4 +54,5 @@ function Dropdown(props) {
   );
 }
 
-export default Dropdown;
+
+export default DropdownButton;
