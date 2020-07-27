@@ -1,36 +1,25 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Dropdown, useDropdownToggle, useDropdownMenu } from 'react-overlays';
-
-const MenuContainer = React.forwardRef(({ show, children, onClick }, ref) => {
-  const style = {
-    display: show ? 'flex' : 'none',
-    minWidth: '150px',
-    position: 'absolute',
-    zIndex: 1000,
-    flexDirection: 'column',
-    border: '1px solid #e5e5e5',
-    backgroundColor: 'white',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)'
-  };
-  return (
-    <div style={style} ref={ref} onClick={onClick}>
-      {children}
-    </div>
-  );
-});
 
 function Menu({ children }) {
   const { show, close, props } = useDropdownMenu();
+  const className = classNames('dropdown-menu', { open: show });
   return (
-    <MenuContainer {...props} show={show} onClick={close}>
+    <div {...props} className={className} onClick={close}>
       {children}
-    </MenuContainer>
+    </div>
   );
 }
 function Toggle({ children }) {
   const [props, { toggle }] = useDropdownToggle();
   return (
-    <button type='button' {...props} onClick={toggle}>
+    <button
+      type='button'
+      className='btn btn-info btn-tertiary'
+      {...props}
+      onClick={toggle}
+    >
       {children}
     </button>
   );
@@ -40,7 +29,7 @@ function DropdownButton({ title, children }) {
   return (
     <Dropdown>
       {({ props }) => (
-        <div {...props}>
+        <div {...props} className='dropdown'>
           <Toggle>{title}</Toggle>
           <Menu>{children}</Menu>
         </div>
