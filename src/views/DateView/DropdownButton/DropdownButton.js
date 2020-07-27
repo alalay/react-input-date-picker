@@ -22,7 +22,7 @@ const MenuContainer = React.forwardRef(({ show, children, onClick }, ref) => {
 function Menu({ children }) {
   const { show, close, props } = useDropdownMenu();
   return (
-    <MenuContainer {...props} show={show} onClick={() => {}}>
+    <MenuContainer {...props} show={show} onClick={close}>
       {children}
     </MenuContainer>
   );
