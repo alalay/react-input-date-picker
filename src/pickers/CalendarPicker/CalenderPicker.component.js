@@ -26,8 +26,11 @@ function CalendarPicker(props) {
     setCalendar({ monthIndex, year });
   }
   function onSelectDate(event, date) {
+    event.persist();
     setSelectedDate(date);
-    onSubmit(event, date);
+    setTimeout(() => {
+      onSubmit(event, date);
+    });
   }
   function onClickToday(event) {
     const now = new Date();

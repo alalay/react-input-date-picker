@@ -34,8 +34,6 @@ function getDateRegexp(dateFormat) {
     regexp: new RegExp(`^\\s*${dateFormatAsRegexp}\\s*$`)
   };
 }
-const result = getDateRegexp('yyyy-MM-dd');
-console.log(result);
 
 /**
  * Convert string in dateFormat to date

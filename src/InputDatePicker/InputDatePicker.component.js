@@ -20,6 +20,21 @@ function InputDatePicker(props) {
     togglePicker(false);
   }
 
+  function onFocus() {
+    if (!picked) {
+      openPicker();
+    }
+  }
+  function onBlur(event) {
+    closePicker();
+    if (props.onBlur) {
+      props.onBlur(event);
+    }
+  }
+  function onClick() {
+    openPicker();
+  }
+
   function onChange(event) {
     inputRef.current.focus();
     setPicked(true);
@@ -27,12 +42,16 @@ function InputDatePicker(props) {
   }
   return (
     <Manager onChange={onChange} value={props.value}>
-      <FocusManager onFocusIn={openPicker} onFocusOut={closePicker}>
+      <FocusManager onClick={onClick} onFocusIn={onFocus} onFocusOut={onBlur}>
         <Input ref={inputRef} />
         {showPicker && (
           <Popper referenceElement={inputRef.current} placement='bottom'>
             {({ style, ref }) => (
-              <div style={style} ref={ref}>
+              <div
+                style={style}
+                ref={ref}
+                onMouseDown={(event) => event.stopPropagation()}
+              >
                 <Picker />
               </div>
             )}

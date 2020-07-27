@@ -67,6 +67,7 @@ function DatePicker(props) {
               return (
                 <td key={j}>
                   <button
+                    type='button'
                     className={className}
                     onClick={(event) =>
                       onSelectDate(event, date, monthIndex, year)
