@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Popper } from 'react-popper';
 
 import FocusManager from '../FocusManager';
@@ -25,7 +26,7 @@ function InputDatePicker(props) {
     closePicker();
   }
   return (
-    <Manager onChange={onChange}>
+    <Manager onChange={onChange} value={props.value}>
       <FocusManager onFocusIn={openPicker} onFocusOut={closePicker}>
         <Input ref={inputRef} />
         {showPicker && (
@@ -41,5 +42,9 @@ function InputDatePicker(props) {
     </Manager>
   );
 }
+
+InputDatePicker.propTypes = {
+  value: PropTypes.string
+};
 
 export default InputDatePicker;

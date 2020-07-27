@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { DateContext } from '../Context';
-import { extractFromDate } from '../date-extraction';
+import { extractFromDate, extractDate } from '../date-extraction';
 
 function Manager(props) {
-  const [state, setState] = useState({ textInput: '' });
+  const [state, setState] = useState(() => extractDate(props.value));
   function onPickerChange(event, { date }) {
     const nextState = extractFromDate(date);
     setState(nextState);
@@ -22,5 +23,9 @@ function Manager(props) {
     </DateContext.Provider>
   );
 }
+
+Manager.propTypes = {
+  value: PropTypes.string
+};
 
 export default Manager;

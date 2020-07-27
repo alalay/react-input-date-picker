@@ -6,10 +6,10 @@ import theme from './Picker.scss';
 import '../../shared/styles/common.scss';
 
 function Picker(props) {
-  const { pickerManagement } = useContext(DateContext);
+  const { value, pickerManagement } = useContext(DateContext);
   return (
     <div className={theme.container} aria-label='Date picker'>
-      <CalendarPicker {...pickerManagement} />
+      <CalendarPicker selectedDate={value.date} {...pickerManagement} />
     </div>
   );
 }

@@ -6,7 +6,7 @@ import 'react-input-date-picker/dist/index.css';
 const App = () => {
   return (
     <div>
-      <InputDatePicker />
+      <InputDatePicker value='2020-07-30' />
     </div>
   );
 };
