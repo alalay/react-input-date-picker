@@ -64,8 +64,12 @@ function DatePicker(props) {
               const buttonProps = currentMonth
                 ? { 'data-value': day }
                 : undefined;
+              const tdProps = {};
+              if (selected) {
+                tdProps['aria-current'] = 'date';
+              }
               return (
-                <td key={j}>
+                <td key={j} {...tdProps}>
                   <button
                     type='button'
                     className={className}

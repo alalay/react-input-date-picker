@@ -43,6 +43,24 @@ function focusOnDay(
     focusOn(allItems[indexToFocus]);
   }
 }
+/**
+ * Focus management on calendar
+ * 1. Focus on the selecteddate
+ * 2. Focus on the first not-disabled item
+ * 3. Focus on the 1st item
+ */
+export function focusOnCalendar(container) {
+  let target = container.querySelector('td[aria-current="date"] > button');
+  if (!target) {
+    target = container.querySelector('td > button[disabled=false]');
+  }
+  if (!target) {
+    target = container.querySelector('td > button[data-value]');
+  }
+  if (target) {
+    target.focus();
+  }
+}
 
 export function withCalendarGesture(WrappedComponent) {
   return function CalenarGesture(props) {
