@@ -17,6 +17,7 @@ function DatePicker(props) {
   const { year, monthIndex } = calendar;
   const dayNames = buildDayNames();
   const weeks = buildWeeks(year, monthIndex);
+
   function isSelected(date) {
     return props.selectedDate && isSameDay(props.selectedDate, date);
   }

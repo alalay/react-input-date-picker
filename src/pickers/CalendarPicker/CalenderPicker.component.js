@@ -14,7 +14,6 @@ function CalendarPicker(props) {
     monthIndex: getMonth(initialCalendarDate),
     year: getYear(initialCalendarDate)
   };
-  const [selectedDate, setSelectedDate] = useState(initialCalendarDate);
   const [calendar, setCalendar] = useState(initialCalendar);
   const [isDateView, setDateView] = useState(true);
 
@@ -25,9 +24,9 @@ function CalendarPicker(props) {
   function onSelectMonthYear(monthIndex, year, callback) {
     setCalendar({ monthIndex, year });
   }
+
   function onSelectDate(event, date) {
     event.persist();
-    setSelectedDate(date);
     setTimeout(() => {
       onSubmit(event, date);
     });
@@ -51,7 +50,7 @@ function CalendarPicker(props) {
   if (isDateView) {
     viewElement = (
       <DateView
-        selectedDate={selectedDate}
+        selectedDate={props.selectedDate}
         calendar={calendar}
         onSelectDate={onSelectDate}
         onSelectMonthYear={onSelectMonthYear}

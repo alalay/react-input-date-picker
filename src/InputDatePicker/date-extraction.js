@@ -25,13 +25,14 @@ function extractFromDate(date, options) {
  * @returns {{partsOrder: array, regexp: RegExp}}
  */
 function getDateRegexp(dateFormat) {
-  const partsOrder = dateFormat.split(/[^A-Za-z]/);
+  // take 'yyyy-MM-dd' as example
+  const partsOrder = dateFormat.split(/[^A-Za-z]/); // split by non-letter character, partsOrder = ['yyyy','MM','dd']
   const dateFormatAsRegexp = dateFormat
     .replace(/[A-Za-z]{4}/g, '([0-9]{4})')
-    .replace(/[A-Za-z]{2}/g, '([0-9]{2})');
+    .replace(/[A-Za-z]{2}/g, '([0-9]{2})'); // build regex base on dateFormat. regex: "([0-9]{4})-([0-9]{2})-([0-9]{2})"
   return {
     partsOrder,
-    regexp: new RegExp(`^\\s*${dateFormatAsRegexp}\\s*$`)
+    regexp: new RegExp(`^\\s*${dateFormatAsRegexp}\\s*$`) // ignore spaces before/after
   };
 }
 
@@ -84,7 +85,7 @@ function strToDate(strToParse, dateFormat) {
   return setDate(monthDate, day);
 }
 
-function extractPartsFromTextInput(textInput, options) {
+export function extractPartsFromTextInput(textInput, options) {
   if (textInput === '') {
     return {
       date: undefined,

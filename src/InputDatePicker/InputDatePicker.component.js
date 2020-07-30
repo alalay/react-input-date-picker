@@ -20,7 +20,7 @@ function InputDatePicker(props) {
   }
 
   function closePicker() {
-    togglePicker(false);
+    // togglePicker(false);
   }
 
   function onFocus() {
@@ -38,10 +38,12 @@ function InputDatePicker(props) {
     openPicker();
   }
 
-  function onChange(event) {
-    inputRef.current.focus();
-    setPicked(true);
-    closePicker();
+  function onChange(event, origin) {
+    if (origin === 'PICKER') {
+      inputRef.current.focus();
+      setPicked(true);
+      closePicker();
+    }
   }
   function onKeyDown(event) {
     switch (event.keyCode) {

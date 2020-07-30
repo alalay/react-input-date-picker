@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { DateContext } from '../Context';
-import { extractFromDate, extractDate } from '../date-extraction';
+import {
+  extractFromDate,
+  extractDate,
+  extractPartsFromTextInput
+} from '../date-extraction';
 
 function Manager(props) {
   function getDateOptions() {
@@ -13,16 +17,27 @@ function Manager(props) {
   const [state, setState] = useState(() =>
     extractDate(props.value, getDateOptions())
   );
+  function onChange(event, origin, payload) {
+    if (props.onChange) {
+      props.onChange(event, origin, payload);
+    }
+  }
   function onPickerChange(event, { date }) {
     const nextState = extractFromDate(date);
     setState(nextState);
-    props.onChange(event);
+    onChange(event, 'PICKER', nextState);
+  }
+  function onInputChange(event) {
+    const { value } = event.target;
+    const nextState = extractPartsFromTextInput(value, getDateOptions());
+    setState(nextState);
+    onChange(event, 'INPUT', nextState);
   }
   return (
     <DateContext.Provider
       value={{
         value: { textInput: state.textInput, date: state.date },
-        inputManagement: { onChange: () => {} },
+        inputManagement: { onChange: onInputChange },
         pickerManagement: { onSubmit: onPickerChange }
       }}
     >
