@@ -20,7 +20,7 @@ function InputDatePicker(props) {
   }
 
   function closePicker() {
-    // togglePicker(false);
+    togglePicker(false);
   }
 
   function onFocus() {
